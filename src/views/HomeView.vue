@@ -1,9 +1,9 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+import TimingsBlock from '../components/TimingsBlock.vue';
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <div>
+    <TimingsBlock />
+  </div>
 </template>
