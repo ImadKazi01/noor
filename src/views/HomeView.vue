@@ -1,9 +1,11 @@
 <script setup>
-import TimingsBlock from '../components/TimingsBlock.vue';
+import Header from '../components/SalaahHeader.vue';
+import DayTimes from '../components/DayTimes.vue';
 </script>
 
 <template>
   <div>
-    <TimingsBlock />
+    <Header />
+    <DayTimes />
   </div>
 </template>
