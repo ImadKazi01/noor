@@ -78,19 +78,16 @@ setInterval(() => determineCurrentPrayer(), 1000)
 </script>
 
 <template>
-  <div class="header">
-    <div class="header__top">
-      <h1 class="header__salaah" v-if="currentPrayer">{{ currentPrayer }}</h1>
-      <p class="header__next" v-if="currentPrayer && timeDifference > 0">
-        {{ nextPrayerTime }} is at
-        {{
-          new Date(nextPrayerTimeValue).toLocaleTimeString([], {
-            hour: '2-digit',
-            minute: '2-digit'
-          })
-        }}
-      </p>
+  <div class="salaah">
+    <div class="salaah__block">
+      <span class="salaah__span">It is</span>
+      <div class="salaah__name" v-if="currentPrayer">{{ currentPrayer }}</div>
     </div>
+    <div class="salaah__next-block">
+      <span class="salaah__next-span">Next salaah</span>
+      <div class="salaah__next-name" v-if="nextPrayerTime">{{ nextPrayerTime }}</div>
+    </div>
+    <!--
     <p v-if="currentPrayer && timeDifference > 0">
       {{
         Math.floor(timeDifference / (1000 * 60 * 60)) > 0
@@ -103,49 +100,67 @@ setInterval(() => determineCurrentPrayer(), 1000)
           : ''
       }}
       until {{ nextPrayerTime }}
-    </p>
+    </p> -->
   </div>
 </template>
 
 <style lang="scss" scoped>
 @import '../scss/global.scss';
-.header {
+.salaah {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  height: 100%;
+  flex-direction: row;
+  justify-content: space-between;
   width: 100%;
-  color: var(--color-text);
   gap: 1rem;
 
-  &__top {
+  &__block {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: flex-start;
-    justify-content: center;
-    width: 100%;
-    gap: 1rem;
-  }
-
-  &__salaah {
-    font-size: 2rem;
-    font-weight: 600;
-  }
-
-  &__salaah,
-  &__next {
+    border-radius: 1rem;
     width: 50%;
-    margin: 0;
-    padding: 4rem 3rem;
-    background-color: $color-white;
-    border-radius: 1.5rem;
-    box-shadow: 2.2px 3.6px 4px rgba(0, 0, 0, 0.022), 5.6px 9.2px 10.2px rgba(0, 0, 0, 0.031),
-      11.5px 18.8px 20.7px rgba(0, 0, 0, 0.039), 23.7px 38.7px 42.7px rgba(0, 0, 0, 0.048),
-      65px 106px 117px rgba(0, 0, 0, 0.07);
+    background-color: $color-primary-100;
+    gap: 1rem;
+    padding: 1rem;
+    box-shadow: 0 20px 15px -12px rgba(0, 0, 0, 0.1);
+  }
+
+  &__span {
+    font-size: $font-size-xxs;
+    font-weight: 400;
+    color: $color-black;
+  }
+
+  &__name {
+    font-size: $font-size-md;
+    font-weight: 700;
+    color: $color-primary;
+  }
+
+  &__next-block {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border-radius: 1rem;
+    width: 50%;
+    background-color: $color-primary;
+    gap: 1rem;
+    padding: 1rem;
+    box-shadow: 0 20px 15px -12px rgba(0, 0, 0, 0.1);
+  }
+
+  &__next-span {
+    font-size: $font-size-xxs;
+    font-weight: 400;
+    color: $color-white;
+  }
+
+  &__next-name {
+    font-size: $font-size-md;
+    font-weight: 700;
+    color: $color-secondary-100;
   }
 }
 </style>

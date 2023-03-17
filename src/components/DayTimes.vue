@@ -51,7 +51,6 @@ const fetchPrayerTimes = async (date) => {
       latitudeAdjustmentMethod: latitudeAdjustmentMethod.value,
       tune: tune.value,
       school: school.value,
-      timeZone: 'UTC+03:00',
       adjustment: 1
     }
   })
